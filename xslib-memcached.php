@@ -5,7 +5,7 @@
 	@brief Memcached/memcachedb client
 	@version 0.3
 */
-class xsMemcached
+class xsMemcachedp
 {
 	private $Host; //!< Hostname or IP of the server
 	private $Port; //!< Port of the server
@@ -194,6 +194,16 @@ class xsMemcached
 		return $Ret;
 	}
 
+	/*! Invalidate all existing items
+	
+		@param Expiration Expiration before flushing
+		@return bool Success
+	*/
+	public function Flush ($Expiration = 0)
+	{
+		return $this->WriteLine('flush_all ' . $Expiration);
+	}
+	
 	/*! Close the connection
 	
 		@return void
